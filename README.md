@@ -17,3 +17,9 @@ The output of all the commands were really messy (and unnecessary because user o
 The next command "exec >/dev/null" redirects the output of each command to /dev/null. But since I want to show some echo messages, I use the old saved stdout to print them e.g. echo "test" >&7.
 
 In the end, I am new to this and my understanding is limited. Apparently, it works as expected.
+
+# Start a command in background and get the process id
+java -jar /path/to/jar &
+PID=$!
+kill -9 $PID
+
