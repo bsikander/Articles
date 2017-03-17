@@ -18,6 +18,11 @@ The next command "exec >/dev/null" redirects the output of each command to /dev/
 
 In the end, I am new to this and my understanding is limited. Apparently, it works as expected.
 
+--> NAMED
+exec {CustomStdOut}>&1
+To use: echo "message" >&$CustomStdOut
+
+
 # Start a command in background and get the process id
 java -jar /path/to/jar &
 PID=$!
