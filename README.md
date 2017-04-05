@@ -28,3 +28,5 @@ java -jar /path/to/jar &
 PID=$!
 kill -9 $PID
 
+# Logging tips:
+See the Interview resources repo and go into Logging folder to get the tips.
