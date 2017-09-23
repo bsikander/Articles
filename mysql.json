@@ -1,0 +1,87 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Metadata": {
+        "AWS::CloudFormation::Designer": {
+            "19bcc3c0-4236-4737-beeb-e4d16ffaf0c8": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": 40,
+                    "y": 119.66666666666667
+                },
+                "z": 0
+            }
+        }
+    },
+    "Parameters": {
+        "DBNameParameter": {
+            "Type": "String",
+            "Default": "rdsmysql"
+        },
+        "MasterUsernameParameter": {
+            "Type": "String",
+            "Default": "mysql"
+        },
+        "DBInstanceIdentifierParameter": {
+            "Type": "String",
+            "Default": "cf-rds-mysql"
+        },
+        "MasterPasswordParameter": {
+            "Type": "String",
+            "Default": "mysql"
+        },
+        "DBInstanceTypeParameter": {
+            "Type": "String",
+            "Default": "db.t2.micro",
+            "AllowedValues": [
+                "db.t2.micro",
+                "db.m1.small",
+                "db.m1.large"
+            ],
+            "Description": "Enter db.t2.micro, db.m1.small, or db.m1.large. Default is db.t2.micro."
+        },
+        "TagCreatedByParameter": {
+            "Type": "String",
+            "Default": ""
+        },
+        "TagPurposeParameter": {
+            "Type": "String",
+            "Default": ""
+        },
+        "TagApplicationIDParameter": {
+            "Type": "String",
+            "Default": ""
+        },
+        "TagUsageParameter": {
+            "Type": "String",
+            "Default": ""
+        }
+    },
+    "Resources": {
+        "RDSDBI2Z6C4": {
+            "Type": "AWS::RDS::DBInstance",
+            "Properties": {
+                "Engine": "mysql",
+                "DBInstanceClass": { "Ref" : "DBInstanceTypeParameter" },
+                "MultiAZ": "false",
+                "AllocatedStorage": "5",
+                "DBInstanceIdentifier": { "Ref" : "DBInstanceIdentifierParameter"},
+                "DBName": { "Ref" : "DBNameParameter" },
+                "MasterUsername": { "Ref" : "MasterUsernameParameter" },
+                "MasterUserPassword": { "Ref" : "MasterPasswordParameter" },
+                "Tags" : [{"Key" : "CreatedBy", "Value" : { "Ref" : "TagCreatedByParameter"}},
+                          {"Key" : "Purpose", "Value" : { "Ref" : "TagPurposeParameter"}},
+                          {"Key" : "ApplicationID", "Value" : { "Ref" : "TagApplicationIDParameter"}},
+                          {"Key" : "Usage", "Value" : { "Ref" : "TagUsageParameter"}}
+                         ]
+            },
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "19bcc3c0-4236-4737-beeb-e4d16ffaf0c8"
+                }
+            }
+        }
+    }
+}
